@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
         zmov = 0;
         if (Input.GetKey(KeyCode.S))
         {
-            xmov = Mathf.Sin(Mathf.Abs(transform.eulerAngles.y)) * Speed;
-            zmov = Mathf.Sqrt(Speed*Speed - xmov*xmov);
+            zmov = Mathf.Sin(transform.eulerAngles.y + 180) * Speed;
+            xmov = Mathf.Sqrt(Speed*Speed - zmov*zmov);
         }
 
         if (Input.GetKey(KeyCode.T)) 
