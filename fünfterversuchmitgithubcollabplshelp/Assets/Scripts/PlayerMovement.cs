@@ -6,24 +6,16 @@ public class PlayerMovement : MonoBehaviour
 {
     // Update is called once per frame
     
-    private float xmov = 0;
-    private float zmov = 0;
-    public float Speed = 0.1f;
+    public float Speed = 10f;
+    public Rigidbody rb;
+    void Start() 
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
-        transform.position = new Vector3(transform.position.x + xmov * Time.deltaTime, transform.position.y, transform.position.z + zmov * Time.deltaTime);
-        xmov = 0;
-        zmov = 0;
-        if (Input.GetKey(KeyCode.S))
-        {
-            zmov = Mathf.Sin(transform.eulerAngles.y + 180) * Speed;
-            xmov = Mathf.Sqrt(Speed*Speed - zmov*zmov);
-        }
-
-        if (Input.GetKey(KeyCode.T)) 
-        {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 1, transform.eulerAngles.z);
-        }
+        transform.position += transform.forward * Speed * Mathf.Round(Input.GetAxis("Vertical")) * Time.deltaTime;
+        transform.Rotate(0, Mathf.Round(Input.GetAxis("Horizontal")), 0);
     }
 }
