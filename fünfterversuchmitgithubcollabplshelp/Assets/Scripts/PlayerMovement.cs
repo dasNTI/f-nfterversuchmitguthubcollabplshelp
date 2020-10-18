@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     
     public float Speed = 10f;
+    public float TurnSpeed = 2f;
     public Rigidbody rb;
     void Start() 
     {
@@ -16,6 +17,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * Speed * Mathf.Round(Input.GetAxis("Vertical")) * Time.deltaTime;
-        transform.Rotate(0, Mathf.Round(Input.GetAxis("Horizontal")), 0);
+        transform.Rotate(0, Input.GetAxis("Mouse X") * TurnSpeed, 0);
     }
 }
