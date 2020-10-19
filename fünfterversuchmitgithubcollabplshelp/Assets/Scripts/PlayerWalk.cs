@@ -8,12 +8,14 @@ public class PlayerWalk : MonoBehaviour
     public float Speed = 1f;
     public float mouseSensitivity = 100f;
     private Camera MainCam;
+    private Rigidbody rb;
 
     float xRotation = 0f;
 
     void Start()
     {
         MainCam = Camera.main;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
